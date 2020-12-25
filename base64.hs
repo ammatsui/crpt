@@ -18,7 +18,7 @@ toN n xs = if length xs == n then xs else toN n (0 : xs)
 -- "join together"
 join s = foldl (++) [] s
 
--- groups of 6
+-- groups of n
 blocks [] _ = []
 blocks s  n = (take n s) : blocks (drop n s) n  
 
