@@ -44,11 +44,11 @@ encodeArray = array (0,64)
           , (54,'2'), (55,'3'), (56,'4'), (57,'5'), (58,'6'), (59,'7')
           , (60,'8'), (61,'9'), (62,'+'), (63,'/') ]
 
--- from the input string to a 24-bit string
+-- from the input string to a string
 strTo :: String -> [Int]
 strTo s = join $ map (toN 8 . toBin) (map ord s)
 
--- from a 24-bit string to the list of final integers
+-- from a string to the list of final integers
 toInd :: [Int] -> [Int]
 toInd s = map toDec ss where ss = blocks s 6
 
@@ -77,11 +77,11 @@ dcd (h:t)
     | otherwise = dcd t
 
 
--- from the encrypted string to a 24-bit string
+-- from the encrypted string to a string
 enStrTo :: String -> [Int]
 enStrTo s = join $ map (toN 6 . toBin) (dcd s)
 
--- from a 24-bit to ascii values
+-- from a string to ascii values
 getInd :: [Int] -> [Int]
 getInd s = map toDec (blocks s 8)
 
