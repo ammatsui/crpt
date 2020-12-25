@@ -11,7 +11,7 @@ toBin :: Int -> [Int]
 toBin 0 = [0]
 toBin n = reverse (helper n)
 
--- n-bit binary
+-- n  binary
 toN :: Int -> [Int] -> [Int]
 toN n xs = if length xs == n then xs else toN n (0 : xs) 
 
