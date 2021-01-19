@@ -17,16 +17,17 @@ decr c d n = modExp c d n
 -- take heed, o eager being!
 -- say, you know p and q and even n (oh wow!)
 -- and you also know e ( /= 2.71828...)
--- and perhaps you also posses a secret message.
--- well done, now save all this data on a disk.
+-- and perhaps you also possess a secret message.
+-- well done, now save all of this data on a disk.
 -- ha
+-- ok
 
--- find d such that mod ed phi == 1
+-- find d such that mod e*d phi == 1
 
 -- extended euclidean algorithm
--- ax + by = 1
+-- a*x + b*y = 1
 -- or
--- ed + phiy = 1
+-- e*d + phi*y = 1
 eea :: Integer -> Integer -> (Integer, Integer)
 eea a 0 = (1, 0)
 eea a b = (t, s - q * t) where (q, r) = quotRem a b
