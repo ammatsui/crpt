@@ -114,7 +114,7 @@ keys = foldr (\ n xs -> [chr n] : xs) [] (take 256 [0..])
 attack :: Hex -> [Ascii]
 attack text = map (encDec (fromHex text)) keys
 
-ok = ['A'..'Z'] ++ ['a'..'z'] ++ " " ++ ['1'..'9']++ "\"!.,\\?-'=;:%(){}[]_0" ++ ['А'..'Я'] ++ ['а'..'я'] ++ 'ії' ++ "\n"
+ok = ['A'..'Z'] ++ ['a'..'z'] ++ " " ++ "1234567890" ++ "\"!.,\\?-'=;:%(){}[]_" ++ ['А'..'Я'] ++ ['а'..'я'] ++ "ії" ++ "\n"
 
 isOk :: Ascii -> Bool
 isOk s = all (\c -> elem c ok) s
