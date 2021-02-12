@@ -2,9 +2,6 @@ import Data.Char (chr, ord)
 import Data.List as L
 import Data.Function (on)
 
--- maybe I should make them newtypes to avoid mistakes
--- or not
-
 type Hex = String
 
 type Ascii = String
@@ -63,7 +60,7 @@ toBin n = reverse (helper n)
 toN :: Int -> [Int] -> [Int]
 toN n xs = if length xs == n then xs else toN n (0 : xs) 
 
--- "join together"
+
 join s = foldl (++) [] s
 
 -- groups of n
@@ -114,6 +111,7 @@ keys = foldr (\ n xs -> [chr n] : xs) [] (take 256 [0..])
 attack :: Hex -> [Ascii]
 attack text = map (encDec (fromHex text)) keys
 
+-- it would make more sense to just allow all printable characters
 ok = ['A'..'Z'] ++ ['a'..'z'] ++ " " ++ "1234567890" ++ "\"!.,\\?-'=;:%(){}[]_" ++ ['А'..'Я'] ++ ['а'..'я'] ++ "ії" ++ "\n"
 
 isOk :: Ascii -> Bool
@@ -140,7 +138,7 @@ singleByte encr = foldr (\mk res -> if isOk (fst mk) then (mk:res) else res) [] 
 
 ----------------------------------------------- guessing the key length -----------------------------------------------------
 
--- cut the message into blocks of length n bits, for all n from 1 to (length of the message)
+-- cut the message into blocks of the length of n bytes, for all n from 1 to (length of the message)
 
 -- for each such partition, calculate the Hamming distance (divided by the length of a block) for any 2 blocks from that partition.
 
